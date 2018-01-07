@@ -3,9 +3,17 @@
   <head>
     <title>Web Barcode Scanner</title>
     <script type="text/javascript" src="instascan.min.js"></script>
+    <style>
+      html,body{
+        width: 100%;
+      }
+      .qrresult{
+
+      }
+    </style>
   </head>
   <body>
-    <video id="preview"></video>
+    <video id="preview" style="display:block;width:80%;margin:0 auto;"></video>
     <br/>
     <span class="qrresult"></span>
     <script type="text/javascript">
@@ -18,7 +26,9 @@
        );
       scanner.addListener('scan', function (content) {
         console.log(content);
-        document.getElementsByClassName('qrresult')[0].innerHTML=content;
+        document.getElementsByClassName('qrresult')[0].innerHTML='<h1>'+
+                    content
+                    +'</h1>';
       });
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
