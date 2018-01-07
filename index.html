@@ -6,6 +6,7 @@
   </head>
   <body>
     <video id="preview"></video>
+    <br/>
     <span class="qrresult"></span>
     <script type="text/javascript">
       let scanner = new Instascan.Scanner(
@@ -18,9 +19,10 @@
       });
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
-          scanner.start(cameras[1]);
+          scanner.start(cameras[cameras.length-1]);
         } else {
           console.error('No cameras found.');
+          document.write('no camera found , this device not support');
         }
       }).catch(function (e) {
         console.error(e);
