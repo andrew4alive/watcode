@@ -1,0 +1,14 @@
+{
+  "name": "watcode",
+  "homepage": "https://github.com/andrew4alive/watcode",
+  "description": "barcode scanner",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
