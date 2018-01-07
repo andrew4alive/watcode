@@ -10,8 +10,11 @@
     <span class="qrresult"></span>
     <script type="text/javascript">
       let scanner = new Instascan.Scanner(
-        {continuous: true,
-         video: document.getElementById('preview') }
+        {
+          continuous: true,
+         video: document.getElementById('preview') ,
+          mirror: true
+       }
        );
       scanner.addListener('scan', function (content) {
         console.log(content);
