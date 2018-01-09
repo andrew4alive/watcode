@@ -33,18 +33,17 @@
           var url = new URL(window.location.href);
           var redirect = url.searchParams.get("_r");
          if(redirect=="true"){
-          window.location.href = content ;
+          window.location.href = this.content ;
           return true;
           }
           else{
-            document.getElementsByClassName('qrresult')[0].innerHTML='<a href="'+content+'">'+
-                        content
-                        +'</a>';
-                        return true;
-          }
+            document.getElementsByClassName('qrresult')[0].innerHTML=
+            '<a href="'+this.content+'">'+this.content+'</a>';
+          return true;
+        }
         }
         document.getElementsByClassName('qrresult')[0].innerHTML='<h1>'+
-                    content
+                    this.content
                     +'</h1>';
       };
 
