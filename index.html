@@ -17,6 +17,16 @@
     <br/>
     <span class="qrresult"></span>
     <script type="text/javascript">
+      var qrhandler={};
+      qrhandler.isUrl =  function(str) {
+        var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+        return pattern.test(str);
+      };
       let scanner = new Instascan.Scanner(
         {
           continuous: true,
@@ -26,6 +36,9 @@
        );
       scanner.addListener('scan', function (content) {
         console.log(content);
+        if(qrhandler.isUrl(content.toString())&&true){
+          window.location.href = content ;
+        }
         document.getElementsByClassName('qrresult')[0].innerHTML='<h1>'+
                     content
                     +'</h1>';
