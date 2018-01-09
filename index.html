@@ -33,12 +33,13 @@
           var url = new URL(window.location.href);
           var redirect = url.searchParams.get("_r");
          if(redirect=="false"){
-          window.location.href = this.content ;
-          return true;
+           document.getElementsByClassName('qrresult')[0].innerHTML=
+           '<a href="'+this.content+'">'+this.content+'</a>';
+         return true;
           }
           else{
-            document.getElementsByClassName('qrresult')[0].innerHTML=
-            '<a href="'+this.content+'">'+this.content+'</a>';
+
+          window.location.href = this.content ;
           return true;
         }
         }
