@@ -29,10 +29,10 @@
         return pattern.test(this.content);
       };
       qrhandler.exe =function(){
-        if(this.isUrl( content.toString() ) ){
+        if(this.isUrl( this.content.toString() ) ){
           var url = new URL(window.location.href);
           var redirect = url.searchParams.get("_r");
-          if(redirect=="true"){
+         if(redirect=="true"){
           window.location.href = content ;
           return true;
           }
