@@ -31,9 +31,21 @@
       qrhandler.exe =function(){
         if(this.isUrl( content.toString() ) ){
           var url = new URL(window.location.href);
-          var c = url.searchParams.get("c");
+          var redirect = url.searchParams.get("_r");
+          if(redirect=="true"){
           window.location.href = content ;
+          return true;
+          }
+          else{
+            document.getElementsByClassName('qrresult')[0].innerHTML='<a href="'+content+'">'+
+                        content
+                        +'</a>';
+                        return true;
+          }
         }
+        document.getElementsByClassName('qrresult')[0].innerHTML='<h1>'+
+                    content
+                    +'</h1>';
       };
 
       let scanner = new Instascan.Scanner(
@@ -47,9 +59,7 @@
         console.log(content);
         qrhandler.content = content;
         qrhandler.exe();
-        document.getElementsByClassName('qrresult')[0].innerHTML='<h1>'+
-                    content
-                    +'</h1>';
+
       });
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
