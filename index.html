@@ -28,9 +28,12 @@
         '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
         return pattern.test(this.content);
       };
-      qrhandler.url =function(){
-        var url = new URL(window.location.href);
-        var c = url.searchParams.get("c");
+      qrhandler.exe =function(){
+        if(this.isUrl( content.toString() ) ){
+          var url = new URL(window.location.href);
+          var c = url.searchParams.get("c");
+          window.location.href = content ;
+        }
       };
 
       let scanner = new Instascan.Scanner(
@@ -42,9 +45,8 @@
        );
       scanner.addListener('scan', function (content) {
         console.log(content);
-        if(qrhandler.isUrl(content.toString())&&true){
-          window.location.href = content ;
-        }
+        qrhandler.content = content;
+        qrhandler.exe();
         document.getElementsByClassName('qrresult')[0].innerHTML='<h1>'+
                     content
                     +'</h1>';
