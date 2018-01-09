@@ -8,7 +8,7 @@
         width: 100%;
       }
       .qrresult>*{
-        font-size: 125px;
+
       }
     </style>
   </head>
@@ -34,7 +34,7 @@
           var redirect = url.searchParams.get("_r");
          if(redirect=="false"){
            document.getElementsByClassName('qrresult')[0].innerHTML=
-           '<a href="'+this.content+'">'+this.content+'</a>';
+           '<a href="'+this.content+'">'+'<h1>'+this.content+'</h1>'+'</a>';
          return true;
           }
           else{
