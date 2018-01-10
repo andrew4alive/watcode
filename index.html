@@ -64,7 +64,18 @@
       });
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
-          scanner.start(cameras[cameras.length-1]);
+          var url = new URL(window.location.href);
+          var camNum = url.searchParams.get("_cam");
+          if(isNaN(camNum)){
+            if(camNum=>0&&camNum<cameras.length){
+              scanner.start(cameras[camNum]);
+            }else {
+              scanner.start(cameras[cameras.length-1]);
+            }
+          }else {
+            scanner.start(cameras[cameras.length-1]);
+          }
+
         } else {
           console.error('No cameras found.');
           document.write('no camera found , this device not support');
