@@ -56,9 +56,8 @@
           return true;
         }
         }
-        document.getElementsByClassName('qrresult')[0].innerHTML='<h1>'+
-                    this.content
-                    +'</h1>';
+        var t ='<h1>'+ this.content+'</h1>';
+        document.write(t);
       };
 
       qrhandler.urlget = function(q){
@@ -79,7 +78,7 @@
        );
       scanner.addListener('scan', function (content) {
       //  console.log(content);
-      document.body.innerHTML = '';
+
         qrhandler.content = content;
         qrhandler.exe();
         scanner.stop();
