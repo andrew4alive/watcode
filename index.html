@@ -56,8 +56,8 @@
         return r;
       }
 
-  
-
+    //  var q = qrhandler.urlget('_cam');
+    //  console.log(q,isNaN(q));
       let scanner = new Instascan.Scanner(
         {
           continuous: true,
@@ -76,7 +76,7 @@
 
           var camNum = qrhandler.urlget('_cam');
 
-          if(isNaN(camNum)){
+          if(!isNaN(camNum)){
             if(camNum>=0&&camNum<cameras.length){
               scanner.start(cameras[camNum]);
             }else {
