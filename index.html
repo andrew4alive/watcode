@@ -22,6 +22,8 @@
       var qrhandler={};
       qrhandler.content = '';
       qrhandler.isUrl =  function() {
+        var r =false;
+        /*
         var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
         '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|'+ // domain name
         '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
@@ -29,7 +31,16 @@
         '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
         '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
         return pattern.test(this.content);
-      };
+        */
+        try{
+          var j = new URL(this.content);
+          rv = true;
+        }
+        catch(e){
+          //console.log(e);
+        };
+        return r;
+      }
       qrhandler.exe =function(){
         if(this.isUrl( this.content.toString() ) ){
           var redirect = this.urlget('_r');
@@ -56,7 +67,6 @@
       //  console.log(r);
         return r;
       }
-
 
 
 
