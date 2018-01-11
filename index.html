@@ -34,8 +34,9 @@
         if(this.isUrl( this.content.toString() ) ){
           var redirect = this.urlget('_r');
          if(redirect=="false"){
-           document.getElementsByClassName('qrresult')[0].innerHTML=
-           '<a href="'+this.content+'">'+'<h1>'+this.content+'</h1>'+'</a>';
+          // document.getElementsByClassName('qrresult')[0].innerHTML=
+           //'<a href="'+this.content+'">'+'<h1>'+this.content+'</h1>'+'</a>';
+           document.write('<a href="'+this.content+'">'+'<h1>'+this.content+'</h1>'+'</a>');
          return true;
           }
           else{
@@ -67,7 +68,7 @@
        }
        );
       scanner.addListener('scan', function (content) {
-        console.log(content);
+      //  console.log(content);
         qrhandler.content = content;
         qrhandler.exe();
 
@@ -95,7 +96,7 @@
       }).catch(function (e) {
         console.error(e);
       });
-    
+
     </script>
   </body>
 </html>
