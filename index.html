@@ -17,6 +17,7 @@
     <video id="preview" style="display:block;width:80%;margin:0 auto;"></video>
     <br/>
     <span class="qrresult"></span>
+    <span id="tr"></span>
     <script type="text/javascript">
       var qrhandler={};
       qrhandler.content = '';
@@ -31,8 +32,7 @@
       };
       qrhandler.exe =function(){
         if(this.isUrl( this.content.toString() ) ){
-          var url = new URL(window.location.href);
-          var redirect = url.searchParams.get("_r");
+          var redirect = this.urlget('_r');
          if(redirect=="false"){
            document.getElementsByClassName('qrresult')[0].innerHTML=
            '<a href="'+this.content+'">'+'<h1>'+this.content+'</h1>'+'</a>';
@@ -49,6 +49,15 @@
                     +'</h1>';
       };
 
+      qrhandler.urlget = function(q){
+        var url = new URL(window.location.href);
+        var r = url.searchParams.get(q);
+      //  console.log(r);
+        return r;
+      }
+
+  
+
       let scanner = new Instascan.Scanner(
         {
           continuous: true,
@@ -64,10 +73,11 @@
       });
       Instascan.Camera.getCameras().then(function (cameras) {
         if (cameras.length > 0) {
-          var url = new URL(window.location.href);
-          var camNum = url.searchParams.get("_cam");
+
+          var camNum = qrhandler.urlget('_cam');
+
           if(isNaN(camNum)){
-            if(camNum=>0&&camNum<cameras.length){
+            if(camNum>=0&&camNum<cameras.length){
               scanner.start(cameras[camNum]);
             }else {
               scanner.start(cameras[cameras.length-1]);
