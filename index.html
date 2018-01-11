@@ -71,6 +71,7 @@
       //  console.log(content);
         qrhandler.content = content;
         qrhandler.exe();
+        scanner.stop();
 
       });
       Instascan.Camera.getCameras().then(function (cameras) {
