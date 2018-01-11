@@ -79,6 +79,7 @@
        );
       scanner.addListener('scan', function (content) {
       //  console.log(content);
+      document.body.innerHTML = '';
         qrhandler.content = content;
         qrhandler.exe();
         scanner.stop();
