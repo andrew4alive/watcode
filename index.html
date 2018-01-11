@@ -77,6 +77,7 @@
           var camNum = qrhandler.urlget('_cam');
 
           if(!isNaN(camNum)){
+            var camNum = parseInt(camNum);
             if(camNum>=0&&camNum<cameras.length){
               scanner.start(cameras[camNum]);
             }else {
